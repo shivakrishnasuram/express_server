@@ -138,6 +138,12 @@ app.post("/registration", usernameValidator, passwordvalidator, gmailvalidator, 
 //     console.log('password is fine')
 // })
 
+app.get("/getalldata",async(req,res)=>{
+    let data =JSON.parse(await fs.readFile("./datas.json","utf8"))
+    res.send(data)
+    console.log(data)
+})
+
 app.post("/login", usernameValidator, passwordvalidator, gmailvalidator, loginsvalidation, (req, res) => {
     res.send("login is fine")
 })
